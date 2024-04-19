@@ -1,0 +1,86 @@
+Assignment 1
+// PROBLEM DEFINITION
+// ------------------
+// Reverse each word in the input string.
+// The order of the words will be unchanged.
+// A word is made up of letters and/or numbers.
+// Other characters (spaces, punctuation) will not be reversed.
+// NOTES
+// ------
+// Write production quality code
+// We prefer clarity over performance (though if you can achieve both - great!)
+// You can use the language that best highlights your programming ability
+// the template below is in C++
+// A working solution is preferred (assert in main() should succeed)
+// Bonus points for good tests
+#include <string>
+#include <cassert>
+std::string reverse_words(const std::string &str)
+{
+// TODO: Implement this function
+return "???";
+}
+int main()
+{
+std::string test_str = "String; 2be reversed...";
+assert(reverse_words(test_str) == "gnirtS; eb2 desrever...");
+return 0;
+}
+
+
+/*
+////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 
+////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+
+
+
+
+#include <string>
+#include <cassert>
+#include <sstream> 
+#include <vector>
+
+std::string rev_string(const std::string &str) {
+    std::istringstream iss(str);
+    std::string word;
+    std::vector<std::string> words;
+
+
+    while (iss >> word) {
+        std::string rev_word(word.rbegin(), word.rend()); 
+        words.push_back(rev_word); 
+    }
+	
+	
+	
+	
+
+
+    std::string rev_str1;
+    for (const auto &rev_word : words) {
+        if (!rev_str1.empty())
+            rev_str1 += " "; 
+        rev_str1 += rev_word;
+    }
+
+
+
+    return rev_str1;
+}
+
+int main() {
+    std::string test_str = "String; 2be reversed...";
+    assert(rev_string(test_str) == "gnirtS; eb2 desrever...");
+
+
+    assert(rev_string("") == "");
+    assert(rev_string("123 456 789") == "321 654 987");
+    assert(rev_string("Hello World!") == "olleH dlroW!");
+    assert(rev_string("A man, a plan, a canal: Panama") == "A nam, a nalg, a lanac : amanaP");
+
+    return 0;
+}
